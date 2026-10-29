@@ -1,0 +1,89 @@
+Clase 2
+EDA (analisis exploratorio de los datos): analisis descriptivo de los datos preferentemente despues de limpiar la base
+El EDA (Exploratory Data Analysis) es el paso crítico del flujo de trabajo de Machine Learning donde se examina y comprende la estructura del dataset antes de aplicar cualquier modelo de aprendizaje. La limpieza previa de datos (imputación/eliminación de valores nulos, remoción de registros duplicados y tratamiento de outliers) es indispensable, ya que las anomalías distorsionan fuertemente los estadísticos descriptivos tradicionales como la media, la desviación estándar y la matriz de correlación.
+Puntos clave del análisis descriptivo tras la limpieza:
+Análisis Univariado: Se evalúa cada variable individualmente. En variables numéricas se calculan métricas de tendencia central (media, mediana) y de dispersión (desviación estándar, rango intercuartílico), acompañadas de histogramas y diagramas de caja (boxplots). En variables categóricas se analizan las frecuencias y proporciones.
+Análisis Bivariado y Multivariado: Se examina cómo se relacionan dos o más variables entre sí. Esto incluye matrices de correlación (como Pearson o Spearman) y gráficos de dispersión (scatter plots) para detectar multicolinealidad o identificar patrones clave entre las variables explicativas y la variable objetivo (target).
+Validación de Supuestos para ML: Permite confirmar la escala de los datos, detectar asimetrías (skewness) y decidir si se requieren transformaciones adicionales (como estandarización, normalización o codificación de variables categóricas) antes del modelado.
+Herramientas habituales: En Python, este proceso se apoya en librerías como Pandas (con funciones como .describe() y .groupby()), Seaborn y Matplotlib, además de herramientas de perfilado automático como ydata-profiling.
+——————————————————————————————-
+Valores Faltantes:
+Borro la fila? seria como la principal solucion al menos el 80% de los casos
+Rellenamos con el valor mas comun
+Rellenamos con la mediana: entre min y max la mediana es el valor central
+¿Qué es la Mediana?
+La mediana es la medida de tendencia central que representa el valor del punto medio de un conjunto de datos cuando estos se ordenan de menor a mayor. Divide los datos exactamente en dos partes iguales: el 50% de las observaciones queda por debajo de la mediana y el 50% por encima.
+——————————————————————————————-
+Valores Duplicados:
+——————————————————————————————-
+Scikit-Learn:
+M->1 F->2 otros -> 3
+——————————————————————————————-
+Outliers:
+cuando los datos no son homogeneos
+es un valor atipico…
+transacciones fraudulentas (esporadicas=atipico)
+errores de carga de datos
+error en la medicion de los datos
+tipos
+univariantes
+linea recta
+es una desviacion de los valores tipicos dsobre una columna de los datos
+multivariantes
+variacion de valor de y y variacion de valor de x
+como se detectan los outliers
+rango intercuartilico
+se separa en cuartos toda la distribucion y lo que se encuentra en los extremos son los outliers
+visualizacion: diagramas boxplot
+reglas de las tres sigmas
+Ej de un grafico de dispersion son los extremos alejados…
+Un outlier o valor atípico es una observación que se encuentra significativamente alejada del resto de los datos en un conjunto. Puede ser producto de un error en la toma/ingreso de datos o reflejar un evento raro pero real.
+Puntos clave:
+Impacto en las estadísticas: Los outliers distorsionan fuertemente la media y la desviación estándar, por lo que en el análisis exploratorio (EDA) se recurre a la mediana o el rango intercuartílico.
+Tipos de outliers: Pueden ser univariados (destacan en una sola variable) o multivariados (combinación inusual entre dos o más variables).
+Estrategias de tratamiento: Si se deben a errores de tipeo o medición, se corrigen o eliminan; si son eventos reales (como un fraude bancario o un pico de ventas por un influencer), se analizan estratégicamente.
+--------------------------------------------------------------------------------
+Ejemplo práctico
+Imagina que registramos los sueldos mensuales (en USD) de 5 empleados en una empresa:
+Datos: [$1,200, $1,300, $1,400, $1,500, $50,000]
+El valor $50,000 es claramente un outlier (puede tratarse del sueldo del dueño o un cero de más ingresado por error).
+Si usamos la media sin tratar el outlier: El salario promedio resulta en $11,080. Esto da una imagen totalmente engañosa de lo que gana la mayoría del equipo.
+Si detectamos el outlier en EDA: Identificamos el valor atípico mediante un gráfico de caja (boxplot) o usando la mediana ($1,400), reflejando con precisión el sueldo representativo del grupo.
+——————————————————————————————-
+Pasos que representa el paso a paso de machine learning:
+pregunta de negocio o necesidad
+obtencion de datos
+tratamiento y preparacion de datos
+entrenamiento
+testeo
+visualizacion e interpretacion
+——————————————————————————————-
+Trabajos con algoritmos:
+seleccion del algoritmo: elegir x diferentes criterios el que se va a emplear y testear
+entrenamiento: hay que ver si el entrenamiento da resultados
+evaluacion de calidad: se utilizan metricas y metodos para decidir si el algoritmo es adecuado o se debe cambiar, como asi tambien si es preciso ajustar sus hiperparametros
+ajuste de hiperparametros: se los modifica segun el tipod e situacion, losd atos y las metricas arrojadas durante y tras el entrenamiento realizado (volver al paso 2)
+objetivos y metricas: si se esta satisfecho, fin de la tarea y modelo entrenado, si no es asi, debemos volver al paso 1.
+——————————————————————————————-
+Parametros:
+Diferencia frente a los parámetros: Los parámetros (como los pesos y el sesgo) son variables internas que el modelo ajusta automáticamente a partir de los datos. En cambio, los hiperparámetros se fijan manualmente de forma previa para guiar ese proceso de aprendizaje.
+Ejemplos habituales: Incluyen la tasa de aprendizaje (learning rate), la profundidad máxima en un árbol de decisión, el número de capas y neuronas en una red neuronal, y el tamaño de lote (batch size) o número de épocas (epochs).
+Ajuste u optimización ( Hyperparameter Tuning ): Es el proceso experimental (manual o mediante algoritmos como Grid Search o Random Search) para encontrar la combinación ideal de hiperparámetros que maximice la precisión y evite el sobreajuste (overfitting).
+——————————————————————————————-
+La Regresión Lineal que aparece en la imagen está directamente relacionada con lo que comentabas sobre la distancia estándar y la elección de un modelo más simple.
+En la Regresión Lineal:
+La "distancia estándar" es el Error Residual: Cuando el algoritmo traza una recta para predecir un valor numérico continuo (como ventas o precios), mide la distancia entre cada punto de datos real y la línea trazada. La distancia estándar (o Error Estándar de la Estimación) indica qué tan lejos se equivocan, en promedio, las predicciones con respecto a la realidad.
+Cuanto menor la distancia, mejor el ajuste: Si esa distancia estándar o error residual es pequeño, significa que la recta pasa muy cerca de los datos reales, por lo que las predicciones del modelo son precisas.
+¿Por qué un modelo más simple es mejor? Tal como destaca la ficha de la imagen, la Regresión Lineal es un modelo simple, rápido e interpretable. Si un modelo lineal y sencillo logra una distancia de error baja, siempre es preferible elegirlo frente a algoritmos mucho más complejos o pesados (como redes neuronales o ensambles), evitando el sobreajuste y manteniendo la explicabilidad del sistema.
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
+——————————————————————————————-
