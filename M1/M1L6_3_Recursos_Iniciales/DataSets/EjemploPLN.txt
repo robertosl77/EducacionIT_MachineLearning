@@ -1,0 +1,4 @@
+Los murciélagos usan la eco localización para navegar y encontrar comida en la oscuridad. 
+Para eco localizar, los murciélagos emiten ondas sonoras por sus boca o nariz. 
+Cuando las ondas sonoras impactan en un objeto, producen ecos. 
+El eco rebota del objeto y vuelve a las orejas del murciélago.
